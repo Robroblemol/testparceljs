@@ -22,4 +22,5 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
-dist
+dist/
+*.lock
