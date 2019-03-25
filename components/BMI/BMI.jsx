@@ -25,6 +25,31 @@ export default class BMI extends Component{
             {weight: ev.target.value},
         )
     }
+    displayBMI(){
+        let bmi = 703 * this.state.weight / (this.state.height * this.state.height);
+        let lastTwoDecimalPlaces = Math.floor(bmi * 100) % 100;
+        return Math.floor(bmi) + "." + lastTwoDecimalPlaces;
+    }
+    displayClassification(){
+        const bmi = parseFloat(this.displayBMI());
+        if(bmi < 18.5){
+            return 'Peso bajo';
+        }else if(bmi < 24.9){
+            return 'Normal';
+        }else if(bmi < 29.9){
+            return 'Sobre peso';
+        }else{
+            return <div>
+                <span className = 'warning'>Obeso</span>
+                {' '}
+                <a className = 'sitelink' href="http://algunapartedeayuda.com">
+                    ¿Que puedo hacer?
+                </a>
+            </div>
+             
+        }
+        
+    }
     displayWeight(){
         
         return `${this.state.weight} ${this.pluralize(this.state.weight,'pound','pounds')}`
@@ -35,6 +60,7 @@ export default class BMI extends Component{
         return `${feet} feet ${inches} ${this.pluralize(inches,'inch','inches')}`
     }
     pluralize(count,singular, plural){
+        //console.log('count',count);
         if(count === 1){
             return singular;
         }
@@ -65,6 +91,12 @@ export default class BMI extends Component{
                 </div>
                 <div className="result">
                     {this.displayWeight()}
+                </div>
+                <div className="result">
+                    {this.displayBMI()}
+                </div>
+                <div className="result">
+                    {this.displayClassification()}
                 </div>
             </div>
         )

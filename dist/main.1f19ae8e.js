@@ -25865,6 +25865,33 @@ function (_Component) {
       });
     }
   }, {
+    key: "displayBMI",
+    value: function displayBMI() {
+      var bmi = 703 * this.state.weight / (this.state.height * this.state.height);
+      var lastTwoDecimalPlaces = Math.floor(bmi * 100) % 100;
+      return Math.floor(bmi) + "." + lastTwoDecimalPlaces;
+    }
+  }, {
+    key: "displayClassification",
+    value: function displayClassification() {
+      var bmi = parseFloat(this.displayBMI());
+
+      if (bmi < 18.5) {
+        return 'Peso bajo';
+      } else if (bmi < 24.9) {
+        return 'Normal';
+      } else if (bmi < 29.9) {
+        return 'Sobre peso';
+      } else {
+        return _react.default.createElement("div", null, _react.default.createElement("span", {
+          className: "warning"
+        }, "Obeso"), ' ', _react.default.createElement("a", {
+          className: "sitelink",
+          href: "http://algunapartedeayuda.com"
+        }, "\xBFQue puedo hacer?"));
+      }
+    }
+  }, {
     key: "displayWeight",
     value: function displayWeight() {
       return "".concat(this.state.weight, " ").concat(this.pluralize(this.state.weight, 'pound', 'pounds'));
@@ -25879,6 +25906,7 @@ function (_Component) {
   }, {
     key: "pluralize",
     value: function pluralize(count, singular, plural) {
+      //console.log('count',count);
       if (count === 1) {
         return singular;
       }
@@ -25906,7 +25934,11 @@ function (_Component) {
         className: "result"
       }, this.displayHeight()), _react.default.createElement("div", {
         className: "result"
-      }, this.displayWeight()));
+      }, this.displayWeight()), _react.default.createElement("div", {
+        className: "result"
+      }, this.displayBMI()), _react.default.createElement("div", {
+        className: "result"
+      }, this.displayClassification()));
     }
   }]);
 
@@ -26012,7 +26044,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45605" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45635" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -8,11 +8,18 @@ body {
  padding: 10px;
 }
 .result{
-    border: solid gary 1px;
     font-weight: bold;
+    border: solid gray 1px;
     font-size: xx-large; 
     padding: 10px;
     margin: 10px;
+}
+.warning{
+    color: red;
+}
+.sitelink{
+    color: gray;
+    font-size: large;
 }
 
 /*# sourceMappingURL=/main.1f19ae8e.css.map */
