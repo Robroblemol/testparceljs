@@ -11,6 +11,7 @@ export default class BMI extends Component{
             }
     this.handleHeightChange = this.handleHeightChange.bind(this);
     this.handleWeightChange = this.handleWeightChange.bind(this);
+   // this.displayHeight=this.displayHeight.bind(this);
     }
     handleHeightChange(ev){
         //console.log('ev.target.value',ev.target.value);
@@ -23,6 +24,21 @@ export default class BMI extends Component{
         this.setState(
             {weight: ev.target.value},
         )
+    }
+    displayWeight(){
+        
+        return `${this.state.weight} ${this.pluralize(this.state.weight,'pound','pounds')}`
+    }
+    displayHeight(){
+        const feet = Math.floor(this.state.height /12);
+        const inches = this.state.height % 12; 
+        return `${feet} feet ${inches} ${this.pluralize(inches,'inch','inches')}`
+    }
+    pluralize(count,singular, plural){
+        if(count === 1){
+            return singular;
+        }
+        return plural;
     }
     render(){
         return (
@@ -45,10 +61,10 @@ export default class BMI extends Component{
 
                 </p>
                 <div className="result">
-                    {this.state.height}
+                    {this.displayHeight()}
                 </div>
                 <div className="result">
-                    {this.state.weight}
+                    {this.displayWeight()}
                 </div>
             </div>
         )

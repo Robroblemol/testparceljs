@@ -25843,7 +25843,8 @@ function (_Component) {
 
     };
     _this.handleHeightChange = _this.handleHeightChange.bind(_assertThisInitialized(_this));
-    _this.handleWeightChange = _this.handleWeightChange.bind(_assertThisInitialized(_this));
+    _this.handleWeightChange = _this.handleWeightChange.bind(_assertThisInitialized(_this)); // this.displayHeight=this.displayHeight.bind(this);
+
     return _this;
   }
 
@@ -25864,6 +25865,27 @@ function (_Component) {
       });
     }
   }, {
+    key: "displayWeight",
+    value: function displayWeight() {
+      return "".concat(this.state.weight, " ").concat(this.pluralize(this.state.weight, 'pound', 'pounds'));
+    }
+  }, {
+    key: "displayHeight",
+    value: function displayHeight() {
+      var feet = Math.floor(this.state.height / 12);
+      var inches = this.state.height % 12;
+      return "".concat(feet, " feet ").concat(inches, " ").concat(this.pluralize(inches, 'inch', 'inches'));
+    }
+  }, {
+    key: "pluralize",
+    value: function pluralize(count, singular, plural) {
+      if (count === 1) {
+        return singular;
+      }
+
+      return plural;
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("div", {
@@ -25882,9 +25904,9 @@ function (_Component) {
         onChange: this.handleWeightChange
       })), _react.default.createElement("div", {
         className: "result"
-      }, this.state.height), _react.default.createElement("div", {
+      }, this.displayHeight()), _react.default.createElement("div", {
         className: "result"
-      }, this.state.weight));
+      }, this.displayWeight()));
     }
   }]);
 
