@@ -1,0 +1,16 @@
+body {
+    background-color: lightskyblue; 
+}
+.container{
+ width: 600xp;
+ margin: auto;
+ background-color: white;
+ padding: 10px;
+}
+.result{
+    border: solid gary 1px;
+    font-weight: bold;
+    font-size: xx-large; 
+}
+
+/*# sourceMappingURL=/main.1f19ae8e.css.map */

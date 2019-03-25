@@ -1,0 +1,11 @@
+.container{
+ width: 600xp;
+ margin: auto;
+ background-color: white;
+ padding: 10px;
+}
+.result{
+    border: solid gary 1px;
+    font-weight: bold;
+    font-size: xx-large; 
+}
